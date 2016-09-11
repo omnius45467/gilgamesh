@@ -7,21 +7,21 @@ class GraphView(urwid.WidgetWrap):
     graph display.
     """
     palette = [
-        ('body',         'black',      'light gray', 'standout'),
-        ('header',       'white',      'dark red',   'bold'),
-        ('screen edge',  'light blue', 'dark cyan'),
-        ('main shadow',  'dark gray',  'black'),
-        ('line',         'black',      'light gray', 'standout'),
-        ('bg background','light gray', 'black'),
-        ('bg 1',         'black',      'dark blue', 'standout'),
+        ('body',         'white',      'black', 'standout'),
+        ('header',       'black',      'white'),
+        ('screen edge',  'black', 'black'),
+        ('main shadow',  'black',  'black'),
+        ('line',         'white',      'light red', 'standout'),
+        ('bg background','black', 'black'),
+        ('bg 1',         'black',      'dark red', 'standout'),
         ('bg 1 smooth',  'dark blue',  'black'),
-        ('bg 2',         'black',      'dark cyan', 'standout'),
-        ('bg 2 smooth',  'dark cyan',  'black'),
+        ('bg 2',         'black',      'dark blue', 'standout'),
+        ('bg 2 smooth',  'dark blue',  'black'),
         ('button normal','light gray', 'dark blue', 'standout'),
         ('button select','white',      'dark green'),
-        ('line',         'black',      'light gray', 'standout'),
+        ('line',         'white',      'black', 'standout'),
         ('pg normal',    'white',      'black', 'standout'),
-        ('pg complete',  'white',      'dark magenta'),
+        ('pg complete',  'dark blue',      'yellow'),
         ('pg smooth',     'dark magenta','black')
         ]
 
@@ -187,10 +187,11 @@ class GraphView(urwid.WidgetWrap):
         self.animate_progress_wrap = urwid.WidgetWrap(
             self.animate_progress)
 
-        l = [    urwid.Text("Mode",align="center"),
+        l = [urwid.Text("The display widget",align="left"),
+             urwid.Text("Mode",align="left"),
             ] + self.mode_buttons + [
             urwid.Divider(),
-            urwid.Text("Animation",align="center"),
+            urwid.Text("Animation",align="left"),
             animate_controls,
             self.animate_progress_wrap,
             urwid.Divider(),
@@ -209,7 +210,7 @@ class GraphView(urwid.WidgetWrap):
         w = urwid.Columns([('weight',2,self.graph_wrap),
             ('fixed',1,vline), c],
             dividechars=1, focus_column=2)
-        w = urwid.Padding(w,('fixed left',1),('fixed right',0))
+        w = urwid.Padding(w,('fixed left',0),('fixed right',0))
         w = urwid.AttrWrap(w,'body')
         w = urwid.LineBox(w)
         w = urwid.AttrWrap(w,'line')

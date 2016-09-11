@@ -2,6 +2,8 @@ import urwid
 from graphmodel import GraphModel
 from graphview import GraphView
 
+UPDATE_INTERVAL = 0.03
+
 class GraphController:
     """
     A class responsible for setting up the model and view and running
