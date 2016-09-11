@@ -1,6 +1,6 @@
 import sys
 import urwid
-from urwid_linewalker import LineWalker
+from linewalker import LineWalker
 
 class EditDisplay:
     palette = [
