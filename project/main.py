@@ -1,14 +1,15 @@
 import sys
-from lib import Interface
-from lib import Project
-from lib import Options
+import urwid
+from lib import EditDisplay
+
+def main():
+    try:
+        name = sys.argv[1]
+        assert open(name, "a")
+    except:
+        sys.stderr.write(__doc__)
+        return
+    EditDisplay(name).main()
 
 if __name__ == '__main__':
-    interface = Interface()
-    options = Options()
-    opts = options.parse(sys.argv[1:])
-
-    v = Project(opts)
-
-    v.date()
-    v.print_example_arg()
+  main()
