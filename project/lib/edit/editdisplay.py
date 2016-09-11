@@ -5,8 +5,8 @@ from linewalker import LineWalker
 class EditDisplay:
     palette = [
         ('body','default', 'default'),
-        ('foot','dark cyan', 'dark blue', 'bold'),
-        ('key','light cyan', 'dark blue', 'underline'),
+        ('foot','default', 'default', 'bold'),
+        ('key','black', 'light blue', 'underline'),
         ]
 
     footer_text = ('foot', [

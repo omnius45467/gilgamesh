@@ -5,3 +5,4 @@ from process import Process, ProcessException
 from graph import GraphController
 from edit import LineWalker
 from edit import EditDisplay
+from help import HelpMenu

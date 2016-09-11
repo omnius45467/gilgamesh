@@ -2,6 +2,7 @@ import sys
 import urwid
 from lib import EditDisplay
 from lib import GraphController
+from lib import HelpMenu
 
 
 def edit(name):
@@ -17,21 +18,38 @@ def graph():
     GraphController().main()
 
 
+def trends():
+    print("twitter trends")
+
+
+def help():
+    HelpMenu().main()
+
+def diagnostic():
+    print("diagnostic")
+
+
 def main():
 
     arg = sys.argv[1]
-    print(sys.argv)
 
     if arg == '-e':
       name = sys.argv[2]
 
       if name:
-        print("edit")
         edit(name)
 
-    elif arg == '-d':
-      print("display")
+    elif arg == '-i':
       graph()
+
+    elif arg == '-t':
+      trends()
+
+    elif arg == '-h':
+      help()
+
+    elif arg == '-d':
+      diagnostic()
 
     else:
       print("there was a problem")
