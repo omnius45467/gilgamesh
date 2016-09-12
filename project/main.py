@@ -1,9 +1,16 @@
+import os
 import sys
 import urwid
 from lib import EditDisplay
 from lib import GraphController
 from lib import HelpMenu
+from lib import DatabaseConnection
 
+from os.path import join, dirname
+from dotenv import load_dotenv
+
+dotenv_path = join(dirname(__file__), '.env')
+load_dotenv(dotenv_path)
 
 def edit(name):
     try:
@@ -25,35 +32,40 @@ def trends():
 def help():
     HelpMenu().main()
 
+
 def diagnostic():
     print("diagnostic")
 
 
 def main():
-
     arg = sys.argv[1]
 
     if arg == '-e':
-      name = sys.argv[2]
+        name = sys.argv[2]
+        if name:
+            edit(name)
+        else:
+            print("Sorry I can't make a connection")
 
-      if name:
-        edit(name)
+    elif arg == '-a':
+        print("starting db connection")
+        DatabaseConnection().RawModel()
 
     elif arg == '-i':
-      graph()
+        graph()
 
     elif arg == '-t':
-      trends()
+        trends()
 
     elif arg == '-h':
-      help()
+        help()
 
     elif arg == '-d':
-      diagnostic()
+        diagnostic()
 
     else:
-      print("there was a problem")
+        print("there was a problem")
 
 
 if __name__ == '__main__':
-  main()
+    main()
